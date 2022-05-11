@@ -73,6 +73,7 @@ main {
         justify-content: center;
         align-items: center;
     }
+
       .imgContainer {
         margin-right: 22px;
         img {
@@ -125,5 +126,9 @@ main {
         }
       }
     }
+    .card.active{
+      display: none;
+    }
   }
 }
+

@@ -9,21 +9,22 @@ function getInput() {
 
 getInput();
 
-searchBtn.addEventListener("click", () => {
-  console.log("clicked");
-});
+
 async function fetchData(query = "") {
   const res = await fetch(`https://api.github.com/users/${query}`);
   const data = await res.json();
   displayData(data);
-  console.log(data)
+  console.log(data.message)
 }
-
-fetchData();
+searchBtn.addEventListener("click", () => {
+ 
+    fetchData();
+});
 
 function displayData(data) {
   let card = document.querySelector(".card");
-  if (data) {
+  if (!data.message) {
+      
     card.innerHTML = `<div class="imgContainer">
     <img src=${data.avatar_url} alt="user ">
     </div>
@@ -38,7 +39,9 @@ function displayData(data) {
         <p><span>${data.public_repos}</span>Repositories</p>
     </div>
     </div>`;
-  } else {
-    return;
+    card.classList.remove('active')
+} else {
+    
+    card.classList.add('active')
   }
 }

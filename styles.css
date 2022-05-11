@@ -197,4 +197,8 @@ main .wrapper .card .info .stats p span {
   font-weight: bold;
   margin-right: 2px;
 }
+
+main .wrapper .card.active {
+  display: none;
+}
 /*# sourceMappingURL=styles.css.map */
