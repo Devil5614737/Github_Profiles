@@ -11,18 +11,14 @@ getInput();
 
 
 async function fetchData(query = "") {
-  const res = await fetch(`https://api.github.com/users/${query}`,{
-    headers:{
-      'Authorization':"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"
-    }
-  });
+  const res = await fetch(`https://api.github.com/users/${query}`);
   const data = await res.json();
   displayData(data);
   console.log(data.message)
 }
 searchBtn.addEventListener("click", () => {
+  fetchData();
  
-    fetchData();
 });
 
 function displayData(data) {

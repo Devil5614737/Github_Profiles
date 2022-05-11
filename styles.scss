@@ -4,12 +4,13 @@ main {
   background-color: #e8f484;
   width: 100vw;
   height: 100vh;
+  padding: 3em 0;
   .wrapper {
     max-width: 1000px;
     margin: 0 auto;
     // display: grid;
     // place-items: center;
-    padding: 2em;
+    padding: 0em 2em;
     .title {
       display: flex;
       align-items: center;
@@ -72,7 +73,6 @@ main {
       margin: 44px 0;
       // overflow: hidden;
       display: flex;
-   
       padding: 2em;
       width: 100%;
       border-radius: 7px;
@@ -121,7 +121,7 @@ main {
             height: 6px;
             background-color: rgb(218, 218, 218);
             border-radius: 100%;
-            margin-right: 14px;
+            margin-right: 8px;
           }
           p {
             color: rgb(40, 40, 40);
