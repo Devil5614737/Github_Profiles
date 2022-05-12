@@ -1,6 +1,7 @@
 let searchBtn = document.getElementById("btn");
 
 function getInput() {
+  console.log('hello')
   let input = document.getElementById("input");
   input.addEventListener("input", (e) => {
     fetchData(e.target.value);
@@ -9,22 +10,31 @@ function getInput() {
 
 getInput();
 
+const debounce = function (cb, d) {
+  let timer;
+ return function (...args){
+   if(timer) clearTimeout(timer)
+   timer=setTimeout(()=>{
+    cb(...args)
+   },d)
+ }
+};
+
+const myDebounce = debounce(getInput, 300);
+
 
 async function fetchData(query = "") {
   const res = await fetch(`https://api.github.com/users/${query}`);
   const data = await res.json();
   displayData(data);
-  console.log(data.message)
 }
 searchBtn.addEventListener("click", () => {
   fetchData();
- 
 });
 
 function displayData(data) {
   let card = document.querySelector(".card");
   if (!data.message) {
-      
     card.innerHTML = `<div class="imgContainer">
     <img src=${data.avatar_url} alt="user ">
     </div>
@@ -39,9 +49,9 @@ function displayData(data) {
         <p><span>${data.public_repos}</span>Repositories</p>
     </div>
     </div>`;
-    card.classList.remove('active')
-} else {
-    
-    card.classList.add('active')
+    card.classList.remove("active");
+  } else {
+    card.classList.add("active");
   }
 }
+
